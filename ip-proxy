@@ -2,7 +2,7 @@ const https = require('https');
 const http = require('http');
 
 const TARGET_HOST = '47.253.206.60';
-const TARGET_PORT = 443; // HTTPS
+const TARGET_PORT = 443;
 
 const server = http.createServer((req, res) => {
     const options = {
@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
         path: req.url,
         method: req.method,
         headers: { ...req.headers, host: TARGET_HOST },
-        rejectUnauthorized: false  // 忽略无效证书
+        rejectUnauthorized: false
     };
 
     const proxyReq = https.request(options, (proxyRes) => {
