@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
         path: req.url,
         method: req.method,
         headers: { ...req.headers, host: TARGET_HOST },
-        rejectUnauthorized: false  // 关键：忽略上游的无效证书
+        rejectUnauthorized: false  // 忽略无效证书
     };
 
     const proxyReq = https.request(options, (proxyRes) => {
